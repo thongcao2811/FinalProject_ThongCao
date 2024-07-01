@@ -8,6 +8,7 @@ import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.testng.annotations.Optional;
+import thongcao_main.helpers.PropertiesHelper;
 
 import java.time.Duration;
 import java.util.HashMap;
