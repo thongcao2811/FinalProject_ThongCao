@@ -6,6 +6,7 @@ import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.Status;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+import thongcao_main.drivers.DriverManager;
 
 import java.util.HashMap;
 import java.util.Map;

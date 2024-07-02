@@ -43,6 +43,7 @@ public class LoginPage {
         setInputEmail(email);
         setInputPassword(password);
         clickLoginButton();
+        return new DashboardPage();
     }
 
 

@@ -4,6 +4,14 @@ import com.aventstack.extentreports.Status;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
+import thongcao_main.UI.WebUI;
+import thongcao_main.helpers.CaptureHelper;
+import thongcao_main.helpers.PropertiesHelper;
+import thongcao_main.logs.LogUtils;
+import thongcao_main.reports.ExtentReportManager;
+import thongcao_main.reports.ExtentTestManager;
+//import thongcao_main.reports.ExtentReportManager;
+//import thongcao_main.reports.ExtentTestManager;
 
 public class TestListener implements ITestListener {
     public String getTestName(ITestResult result) {
@@ -74,7 +82,7 @@ public class TestListener implements ITestListener {
 
         //Allure Report
         //AllureManager.saveTextLog(result.getName() + " is failed.");
-        AllureManager.saveScreenshotPNG();
+//        AllureManager.saveScreenshotPNG();
     }
 
     @Override

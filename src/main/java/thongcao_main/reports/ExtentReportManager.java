@@ -2,6 +2,7 @@ package thongcao_main.reports;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
+import thongcao_main.helpers.PropertiesHelper;
 
 public class ExtentReportManager {
     private static final ExtentReports extentReports = new ExtentReports();

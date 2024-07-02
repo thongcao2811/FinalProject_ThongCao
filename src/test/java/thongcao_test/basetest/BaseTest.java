@@ -7,7 +7,10 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Optional;
+import thongcao_main.drivers.DriverManager;
 import thongcao_main.helpers.PropertiesHelper;
 
 import java.time.Duration;
@@ -15,8 +18,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class BaseTest {
+    @BeforeMethod
     public void createBrowser(@Optional("chrome") String browserName){
         WebDriver driver = setBrowser(browserName);
+        DriverManager.setDriver(driver);
 
     }
 
@@ -73,6 +78,12 @@ public class BaseTest {
         driver.manage().window().maximize();
 
         return driver;
+
+    }
+
+    @AfterMethod
+    public void closeBrowser(){
+        DriverManager.quit();
 
     }
 
