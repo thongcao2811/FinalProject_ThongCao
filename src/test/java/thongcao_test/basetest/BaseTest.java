@@ -9,14 +9,17 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Optional;
 import thongcao_main.drivers.DriverManager;
 import thongcao_main.helpers.PropertiesHelper;
+import thongcao_test.listeners.TestListener;
 
 import java.time.Duration;
 import java.util.HashMap;
 import java.util.Map;
 
+@Listeners(TestListener.class)
 public class BaseTest {
     @BeforeMethod
     public void createBrowser(@Optional("chrome") String browserName){

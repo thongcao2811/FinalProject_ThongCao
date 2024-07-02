@@ -9,7 +9,9 @@ public class DashboardPage {
     private By manageProfile = By.xpath("//div[@class='d-flex align-items-start']//span[@class='aiz-side-nav-text'][normalize-space()='Manage Profile']");
     private By homePage = By.xpath("//a[contains(text(),'Home')]");
     private By logoutButton = By.xpath("//a[contains(@class,'text-reset d-inline-block opacity-60 py-2')][normalize-space()='Logout']");
-    private By cancelButton = By.xpath("//i[@class='la la-close fs-20']");
+//    private By cancelButton = By.xpath("//i[@class='la la-close fs-20']");
+
+    private By cancelButton = By.xpath("//button[@data-key='website-popup' and @data-value='removed']");
 
 
     public ManageProfilePage clickManageProfile(){
@@ -23,6 +25,7 @@ public class DashboardPage {
     }
 
     public void clickCancelButton(){
+        WebUI.waitForPageLoaded();
         WebUI.clickElement(cancelButton);
     }
     public LoginPage logOut(){

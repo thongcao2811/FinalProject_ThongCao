@@ -1,8 +1,11 @@
 package thongcao_test.cms_tests;
 
 import org.testng.annotations.Test;
+import thongcao_main.UI.WebUI;
 import thongcao_main.configs.ConfigData;
 import thongcao_main.dataprovider.DataProviderFactory;
+import thongcao_main.helpers.PropertiesHelper;
+import thongcao_main.reports.ExtentTestManager;
 import thongcao_test.basetest.BaseTest;
 import thongcao_test.cms_pages.DashboardPage;
 import thongcao_test.cms_pages.LoginPage;
@@ -12,11 +15,20 @@ public class LoginTest extends BaseTest {
     DashboardPage dashboardPage;
 
     @Test(dataProvider = "DataLoginSuccess",dataProviderClass = DataProviderFactory.class)
-    public void testLoginSuccessCustomer(String email, String password){
+    public void testLoginSuccess(String email, String password){
         dashboardPage = loginPage.loginCMS(email,password);
         loginPage.verifyLoginSuccess();
+        dashboardPage.clickCancelButton();
         dashboardPage.logOut();
-
+        WebUI.sleep(3);
     }
+    @Test(dataProvider = "DataLoginFail",dataProviderClass = DataProviderFactory.class)
+    public void testLoginFail(String email, String password){
+        dashboardPage = loginPage.loginCMS(email,password);
+        loginPage.verifyLoginFail();
+        WebUI.sleep(3);
+    }
+
+
 
 }

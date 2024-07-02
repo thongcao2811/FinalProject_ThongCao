@@ -75,6 +75,7 @@ public class WebUI {
     public static void setText(String by, String value) {
         waitForElementVisible(By.xpath(by));
         sleep(STEP_TIME);
+        DriverManager.getDriver().findElement(By.xpath(by)).clear();
         DriverManager.getDriver().findElement(By.xpath(by)).sendKeys(value);
         LogUtils.info("Set text " + value + " on element " + by);
         ExtentTestManager.logMessage(Status.INFO, "Set text " + value + " on element " + by);

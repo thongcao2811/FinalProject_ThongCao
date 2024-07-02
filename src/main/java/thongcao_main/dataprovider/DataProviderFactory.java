@@ -19,7 +19,10 @@ public class DataProviderFactory {
     public Object[][] dataLoginFail() {
         return new Object[][]{
                 {"admin123@example.com", "123456"},
-                {"customer123@example.com", "123456"}
+                {"customer123@example.com", "123456"},
+                {"admin@example.com", "123456789"},
+                {"customer@example.com", "123456789"},
+
         };
     }
 

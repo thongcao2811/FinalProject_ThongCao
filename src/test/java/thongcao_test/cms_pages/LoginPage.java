@@ -11,7 +11,7 @@ public class LoginPage {
     private By inputEmail = By.xpath("//input[@id='email']");
     private By inputPassword = By.xpath("//input[@id='password']");
     private By buttonLogin = By.xpath("//button[normalize-space()='Login']");
-    private By errorMessage = By.xpath("");
+
 
 
     private void setInputEmail(String email){
@@ -28,7 +28,8 @@ public class LoginPage {
 
     public void verifyLoginSuccess(){
         WebUI.waitForPageLoaded();
-        Assert.assertTrue(DriverManager.getDriver().getCurrentUrl().contains("dashboard"),"Still being in Login Page");
+        Assert.assertFalse(DriverManager.getDriver().getCurrentUrl().contains("login"),"Still being in Login Page");
+
     }
 
     public void verifyLoginFail(){

@@ -49,14 +49,14 @@ public class TestListener implements ITestListener {
     public void onTestSuccess(ITestResult result) {
         LogUtils.info("==> " + result.getName() + " is successfully.");
 
-        if (PropertiesHelper.getValue("SCREENSHOT_PASS").equals("true")) {
-            CaptureHelper.takeScreenshot(result.getName());
-        }
-
-        if (PropertiesHelper.getValue("VIDEO_RECORD").equals("true")) {
-            WebUI.sleep(1);
-            CaptureHelper.stopRecord();
-        }
+//        if (PropertiesHelper.getValue("SCREENSHOT_PASS").equals("true")) {
+//            CaptureHelper.takeScreenshot(result.getName());
+//        }
+//
+//        if (PropertiesHelper.getValue("VIDEO_RECORD").equals("true")) {
+//            WebUI.sleep(1);
+//            CaptureHelper.stopRecord();
+//        }
 
         //Extent Report
         ExtentTestManager.logMessage(Status.PASS, result.getName() + " is passed.");
