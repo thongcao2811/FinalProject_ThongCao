@@ -14,21 +14,33 @@ public class LoginTest extends BaseTest {
     LoginPage loginPage = new LoginPage();
     DashboardPage dashboardPage;
 
-    @Test(dataProvider = "DataLoginSuccess",dataProviderClass = DataProviderFactory.class)
-    public void testLoginSuccess(String email, String password){
-        dashboardPage = loginPage.loginCMS(email,password);
+
+//    (dataProvider = "DataLoginSuccessCustomer",dataProviderClass = DataProviderFactory.class)
+    @Test (dataProvider = "DataLoginSuccessCustomer",dataProviderClass = DataProviderFactory.class)
+    public void testLoginSuccessCustomer(String email, String password){
+        dashboardPage = loginPage.loginCMS(email, password);//
         loginPage.verifyLoginSuccess();
         dashboardPage.clickCancelButton();
         dashboardPage.logOut();
         WebUI.sleep(3);
     }
-    @Test(dataProvider = "DataLoginFail",dataProviderClass = DataProviderFactory.class)
+    @Test (dataProvider = "DataLoginSuccessAdmin",dataProviderClass = DataProviderFactory.class)
+    public void testLoginSuccessAdmin(String email, String password){
+        dashboardPage = loginPage.loginCMS(email, password);
+        loginPage.verifyLoginSuccess();
+//        dashboardPage.logOut();
+        WebUI.sleep(3);
+
+    }
+
+    @Test (dataProvider = "DataLoginFail",dataProviderClass = DataProviderFactory.class)
     public void testLoginFail(String email, String password){
         dashboardPage = loginPage.loginCMS(email,password);
         loginPage.verifyLoginFail();
         WebUI.sleep(3);
     }
 
-
-
 }
+
+
+

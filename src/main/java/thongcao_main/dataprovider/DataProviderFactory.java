@@ -15,6 +15,22 @@ public class DataProviderFactory {
 //        return data;
     }
 
+    @DataProvider(name = "DataLoginSuccessCustomer", parallel = true)
+    public Object[][] dataLoginSuccessCustomer() {
+        return new Object[][]{
+                {"customer@example.com", "123456"}
+        };
+
+    }
+
+    @DataProvider(name = "DataLoginSuccessAdmin", parallel = true)
+    public Object[][] dataLoginSuccessAdmin() {
+        return new Object[][]{
+                {"admin@example.com", "123456"}
+        };
+
+    }
+
     @DataProvider(name = "DataLoginFail", parallel = true)
     public Object[][] dataLoginFail() {
         return new Object[][]{

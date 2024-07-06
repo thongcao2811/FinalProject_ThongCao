@@ -81,6 +81,15 @@ public class WebUI {
         ExtentTestManager.logMessage(Status.INFO, "Set text " + value + " on element " + by);
     }
 
+    @Step("Clear text {0}")
+    public static void clearText(By by){
+        waitForElementVisible(by);
+//        highLightElement();
+        sleep(STEP_TIME);
+        DriverManager.getDriver().findElement(by).clear();
+        LogUtils.info("Cleared element" + by);
+        ExtentTestManager.logMessage(Status.INFO, "Cleared text" + by);
+    }
     @Step("Click element {0}")
     public static void clickElement(By by) {
         waitForElementClickable(by);
@@ -110,6 +119,20 @@ public class WebUI {
         LogUtils.info("Set text " + value + " on element " + by);
         ExtentTestManager.logMessage(Status.INFO, "Set text " + value + " on element " + by);
     }
+
+//    //Coded by Thong Cao
+//    @Step("Set text {1} on element {0}")
+//    public static void setText(By by) {
+//        waitForElementVisible(by);
+//        highLightElement(by);
+//        sleep(STEP_TIME);
+//        DriverManager.getDriver().findElement(by).sendKeys(value);
+//        LogUtils.info("Set text " + value + " on element " + by);
+//        ExtentTestManager.logMessage(Status.INFO, "Set text " + value + " on element " + by);
+//    }
+
+
+
 
     @Step("Set text {1} on element {0} with timeout {2}")
     public static void setText(By by, String value, int timeOut) {

@@ -29,6 +29,7 @@ public class DashboardPage {
         WebUI.clickElement(cancelButton);
     }
     public LoginPage logOut(){
+        WebUI.waitForPageLoaded();
         WebUI.clickElement(logoutButton);
         return new LoginPage();
     }
