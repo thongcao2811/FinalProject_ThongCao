@@ -17,9 +17,9 @@ public class ManageProfilePage {
 
     public void updateManageProfile(String name,String phone){
         WebUI.waitForPageLoaded();
-        WebUI.clearText(yourName);
+//        WebUI.clearText(yourName);
         WebUI.setText(yourName, name);
-        WebUI.clearText(yourPhone);
+//        WebUI.clearText(yourPhone);
         WebUI.setText(yourPhone, phone);
         WebUI.clickElement(updateProfileButton);
         WebUI.sleep(3);
