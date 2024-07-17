@@ -21,7 +21,7 @@ public class DashboardPage {
     private By firstNewProduct = By.xpath("//a[contains(text(),'Giỏ quà Tết Giáp Thìn')]");
     private By noProductFound = By.xpath("//div[@class='search-nothing p-3 text-center fs-16']");
     private By productName = By.xpath("//h1[contains(text(),'Giỏ quà Tết Giáp Thìn')]");
-    private By soldBy = By.xpath("//div[@class='row align-items-center']//div[@class='col-auto']/child::small/following-sibling::br");
+    private By soldBy = By.xpath("//div[@class='row align-items-center']//div[@class='col-auto']");
     private By price = By.xpath("//strong[@class='h2 fw-600 text-primary']");
     private By quantity = By.xpath("//input[@placeholder='1']");
     private By totalPrice = By.xpath("//strong[@id='chosen_price']");
@@ -57,13 +57,27 @@ public class DashboardPage {
         WebUI.sleep(3);
     }
 
+    public void splitString(String text){
+        String originalText = "";
+        String[] parts = originalText.split(":");
+        if (parts.length > 1) {
+            String result = parts[1];
+//            System.out.println("Extracted text: " + result);
+        } else {
+            System.out.println("Pattern not found in the original text.");
+        }
+    }
+
+    
+
     public void setProductInfo(){
         ExcelHelper excelHelper = new ExcelHelper();
         excelHelper.setExcelFile("src/test/resources/testdata/ProductInfo.xlsx","Sheet1");
         excelHelper.setCellData(WebUI.getElementText(productName),"Name",1);
 
-//        excelHelper.setCellData(WebUI.getElementText(soldBy),"Soldby",1);
-        excelHelper.setCellData(WebUI.getElementAttribute(soldBy,"br"),"Soldby",1);
+        excelHelper.setCellData(WebUI.getElementText(soldBy),"Soldby",1);
+
+//        excelHelper.setCellData(WebUI.getElementAttribute(soldBy,"br"),"Soldby",1);
         excelHelper.setCellData(WebUI.getElementText(price),"Price",1);
 //        excelHelper.setCellData(WebUI.getElementText(quantity),"Quantity",1);
         excelHelper.setCellData(WebUI.getElementAttribute(quantity,"placeholder"),"Quantity",1);

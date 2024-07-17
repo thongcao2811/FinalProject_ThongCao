@@ -79,15 +79,6 @@ public class WebUI {
         ExtentTestManager.logMessage(Status.INFO, "Set text " + value + " on element " + by);
     }
 
-//    @Step("Clear text {0}")
-//    public static void clearText(By by){
-//        waitForElementVisible(by);
-////        highLightElement();
-//        sleep(STEP_TIME);
-//        DriverManager.getDriver().findElement(by).clear();
-//        LogUtils.info("Cleared element" + by);
-//        ExtentTestManager.logMessage(Status.INFO, "Cleared text" + by);
-//}
 @Step("Click element {0}")
 public static void clickElement(By by) {
     waitForElementClickable(by);
