@@ -74,12 +74,8 @@ public class DashboardPage {
         ExcelHelper excelHelper = new ExcelHelper();
         excelHelper.setExcelFile("src/test/resources/testdata/ProductInfo.xlsx","Sheet1");
         excelHelper.setCellData(WebUI.getElementText(productName),"Name",1);
-
-        excelHelper.setCellData(WebUI.getElementText(soldBy),"Soldby",1);
-
-//        excelHelper.setCellData(WebUI.getElementAttribute(soldBy,"br"),"Soldby",1);
+        excelHelper.setCellData(WebUI.getElementText(soldBy).split(":",2)[1].trim(),"Soldby",1);//
         excelHelper.setCellData(WebUI.getElementText(price),"Price",1);
-//        excelHelper.setCellData(WebUI.getElementText(quantity),"Quantity",1);
         excelHelper.setCellData(WebUI.getElementAttribute(quantity,"placeholder"),"Quantity",1);
         excelHelper.setCellData(WebUI.getElementText(totalPrice),"TotalPrice",1);
 

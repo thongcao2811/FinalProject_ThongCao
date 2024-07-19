@@ -19,7 +19,7 @@ import java.time.Duration;
 import java.util.List;
 
 public class WebUI {
-    private static int TIMEOUT = 10;
+    private static int TIMEOUT = 20;
     private static double STEP_TIME = 0;
     private static int PAGE_LOAD_TIMEOUT = 20;
 
