@@ -18,7 +18,7 @@ public class LoginTest extends BaseTest {
 //    (dataProvider = "DataLoginSuccessCustomer",dataProviderClass = DataProviderFactory.class)
     @Test (dataProvider = "DataLoginSuccessCustomer",dataProviderClass = DataProviderFactory.class)
     public void testLoginSuccessCustomer(String email, String password){
-        dashboardPage = loginPage.loginCMS(email, password);//
+        dashboardPage = loginPage.loginCMS(ConfigData.EMAILCUSTOMER, ConfigData.PASSWORDCUSTOMER);
         loginPage.verifyLoginSuccess();
         dashboardPage.clickCancelButton();
         dashboardPage.logOut();
@@ -26,7 +26,7 @@ public class LoginTest extends BaseTest {
     }
     @Test (dataProvider = "DataLoginSuccessAdmin",dataProviderClass = DataProviderFactory.class)
     public void testLoginSuccessAdmin(String email, String password){
-        dashboardPage = loginPage.loginCMS(email, password);
+        dashboardPage = loginPage.loginCMS(ConfigData.EMAILADMIN, ConfigData.PASSWORDADMIN);
         loginPage.verifyLoginSuccess();
 //        dashboardPage.logOut();
         WebUI.sleep(3);
