@@ -79,9 +79,9 @@ public class DashboardPage {
         excelHelper.setCellData(WebUI.getElementAttribute(quantity,"placeholder"),"Quantity",1);
         excelHelper.setCellData(WebUI.getElementText(totalPrice),"TotalPrice",1);
 
-
-
     }
+
+
 
 
 

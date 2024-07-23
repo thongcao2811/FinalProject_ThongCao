@@ -14,6 +14,7 @@ public class ProductPageAdmin {
     private By inputUnitPrice = By.xpath("//input[@placeholder='Unit price']");
     private By inputDiscount = By.xpath("//input[@placeholder='Discount']");
     private By inputQuantity = By.xpath("//input[@placeholder='Quantity']");
+    private By buttonSaveandPublish = By.xpath("//button[normalize-space()='Save & Publish']");
 
     public void clickAddNewProduct(){
         WebUI.clickElement(addNewProduct);
@@ -24,6 +25,13 @@ public class ProductPageAdmin {
         WebUI.clickElement(dropdownCategory);
         WebUI.setText(inputCategorySearch,"Sport shoes");
         WebUI.setKey(inputCategorySearch, Keys.ENTER);
+        WebUI.setText(inputMinimumPurchaseQty,"28");
+        WebUI.setText(inputTags,"sportshoes");
+        WebUI.setKey(inputTags, Keys.ENTER);
+        WebUI.setText(inputUnitPrice, "2600000");
+        WebUI.setText(inputDiscount,"5");
+        WebUI.setText(inputQuantity,"3");
+        WebUI.clickElement(buttonSaveandPublish);
 
 
     }
