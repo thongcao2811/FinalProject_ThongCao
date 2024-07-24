@@ -54,6 +54,9 @@ public class DashboardPage {
         WebUI.setTextAndKey(searchTextBox, inputProductName, Keys.ENTER);
         WebUI.waitForPageLoaded();
         WebUI.clickElement(firstNewProduct);
+
+
+        
         WebUI.sleep(3);
     }
 
@@ -80,6 +83,23 @@ public class DashboardPage {
         excelHelper.setCellData(WebUI.getElementText(totalPrice),"TotalPrice",1);
 
     }
+
+    public void verifyProductExisting(By by, String value){
+        WebUI.waitForPageLoaded();
+        WebUI.setTextAndKey(searchTextBox, value, Keys.ENTER);
+        searchProduct();
+
+
+
+        WebUI.checkElementExist(by);
+
+
+
+
+    }
+
+
+
 
 
 

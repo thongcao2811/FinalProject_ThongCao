@@ -5,6 +5,7 @@ import org.openqa.selenium.Keys;
 import thongcao_main.UI.WebUI;
 
 public class ProductPageAdmin {
+    private By menuDashboardPageAdmin = By.xpath("")
     private By addNewProduct = By.xpath("//span[normalize-space()='Add New Product']");
     private By inputProductName = By.xpath("//input[@placeholder='Product Name']");
     private By dropdownCategory = By.xpath("//button[@title='Sport shoes']");
@@ -32,9 +33,12 @@ public class ProductPageAdmin {
         WebUI.setText(inputDiscount,"5");
         WebUI.setText(inputQuantity,"3");
         WebUI.clickElement(buttonSaveandPublish);
-
-
     }
+
+    public DashboardPageAdmin clickDashboardPageAdmin(){
+        WebUI.clickElement();
+    }
+
 
 
 
