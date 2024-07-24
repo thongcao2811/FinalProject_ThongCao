@@ -12,9 +12,14 @@ import thongcao_test.cms_pages.LoginPage;
 import java.io.ObjectInputFilter;
 
 public class DashboardTest extends BaseTest {
+
+
+
     LoginPage loginPage = new LoginPage();
     DashboardPage dashboardPage = new DashboardPage();
     DashboardPageAdmin dashboardPageAdmin;
+
+
 
 
 
@@ -31,6 +36,10 @@ public class DashboardTest extends BaseTest {
 
     @Test
     public void verifyNewAddedProduct(){
+        dashboardPage = loginPage.loginCMS(ConfigData.EMAILCUSTOMER,ConfigData.PASSWORDCUSTOMER);
+        loginPage.verifyLoginSuccess();
+        dashboardPage.verifyProductBeforeAdding();
+
 
 
     }

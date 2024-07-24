@@ -9,7 +9,10 @@ import thongcao_main.drivers.DriverManager;
 import thongcao_main.helpers.ExcelHelper;
 
 public class DashboardPage {
+    LoginPage loginPage = new LoginPage();
     String inputProductName = "Gio Qua Tet";
+    String newProduct = "Yonex65X3";
+    private By newAddingProduct = By.xpath("//a[normalize-space()='Yonex65Z3']");
     private By menuDashboard = By.xpath("//div[@class='d-flex align-items-start']//span[@class='aiz-side-nav-text'][normalize-space()='Dashboard']");
     private By manageProfile = By.xpath("//div[@class='d-flex align-items-start']//span[@class='aiz-side-nav-text'][normalize-space()='Manage Profile']");
     private By homePage = By.xpath("//a[contains(text(),'Home')]");
@@ -54,9 +57,6 @@ public class DashboardPage {
         WebUI.setTextAndKey(searchTextBox, inputProductName, Keys.ENTER);
         WebUI.waitForPageLoaded();
         WebUI.clickElement(firstNewProduct);
-
-
-        
         WebUI.sleep(3);
     }
 
@@ -84,18 +84,19 @@ public class DashboardPage {
 
     }
 
-    public void verifyProductExisting(By by, String value){
+    public void verifyProductBeforeAdding(){
+        WebUI.waitForPageLoaded();
+        WebUI.setTextAndKey(searchTextBox, newProduct, Keys.ENTER);
+        WebUI.waitForElementVisible(newAddingProduct);
+        Assert.assertFalse(WebUI.checkElementDisplayed(newAddingProduct),"Product is existing");
+
+    }
+
+    public void verifyProductAfterAdding(By by, String value){
         WebUI.waitForPageLoaded();
         WebUI.setTextAndKey(searchTextBox, value, Keys.ENTER);
-        searchProduct();
-
-
-
-        WebUI.checkElementExist(by);
-
-
-
-
+        WebUI.waitForElementVisible(by);
+        Assert.assertTrue(WebUI.checkElementDisplayed(by),"Product is NOT existing");
     }
 
 
