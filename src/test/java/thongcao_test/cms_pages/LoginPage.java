@@ -47,6 +47,15 @@ public class LoginPage {
         return new DashboardPage();
     }
 
+    public DashboardPageAdmin loginCMSAdmin(String email, String password){
+        WebUI.openURL(ConfigData.URL);
+        WebUI.waitForPageLoaded();
+        setInputEmail(email);
+        setInputPassword(password);
+        clickLoginButton();
+        return new DashboardPageAdmin();
+    }
+
 
 
 

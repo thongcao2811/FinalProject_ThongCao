@@ -11,8 +11,8 @@ import thongcao_main.helpers.ExcelHelper;
 public class DashboardPage {
     LoginPage loginPage = new LoginPage();
     String inputProductName = "Gio Qua Tet";
-    String newProduct = "Yonex65X3";
-    private By newAddingProduct = By.xpath("//a[normalize-space()='Yonex65Z3']");
+    String newProduct = "Yonex 65Z3";
+    private By newAddingProduct = By.xpath("//a[normalize-space()='Yonex 65Z3']");
     private By menuDashboard = By.xpath("//div[@class='d-flex align-items-start']//span[@class='aiz-side-nav-text'][normalize-space()='Dashboard']");
     private By manageProfile = By.xpath("//div[@class='d-flex align-items-start']//span[@class='aiz-side-nav-text'][normalize-space()='Manage Profile']");
     private By homePage = By.xpath("//a[contains(text(),'Home')]");
@@ -92,11 +92,11 @@ public class DashboardPage {
 
     }
 
-    public void verifyProductAfterAdding(By by, String value){
+    public void verifyProductAfterAdding(){
         WebUI.waitForPageLoaded();
-        WebUI.setTextAndKey(searchTextBox, value, Keys.ENTER);
-        WebUI.waitForElementVisible(by);
-        Assert.assertTrue(WebUI.checkElementDisplayed(by),"Product is NOT existing");
+        WebUI.setTextAndKey(searchTextBox, newProduct, Keys.ENTER);
+        WebUI.waitForElementVisible(newAddingProduct);
+        Assert.assertTrue(WebUI.checkElementDisplayed(newAddingProduct),"Product is NOT existing");
     }
 
 

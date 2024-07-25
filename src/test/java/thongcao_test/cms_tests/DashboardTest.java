@@ -8,6 +8,7 @@ import thongcao_test.basetest.BaseTest;
 import thongcao_test.cms_pages.DashboardPage;
 import thongcao_test.cms_pages.DashboardPageAdmin;
 import thongcao_test.cms_pages.LoginPage;
+import thongcao_test.cms_pages.ProductPageAdmin;
 
 import java.io.ObjectInputFilter;
 
@@ -17,10 +18,8 @@ public class DashboardTest extends BaseTest {
 
     LoginPage loginPage = new LoginPage();
     DashboardPage dashboardPage = new DashboardPage();
-    DashboardPageAdmin dashboardPageAdmin;
-
-
-
+    DashboardPageAdmin dashboardPageAdmin = new DashboardPageAdmin();
+    ProductPageAdmin productPageAdmin = new ProductPageAdmin();
 
 
 
@@ -38,8 +37,18 @@ public class DashboardTest extends BaseTest {
     public void verifyNewAddedProduct(){
         dashboardPage = loginPage.loginCMS(ConfigData.EMAILCUSTOMER,ConfigData.PASSWORDCUSTOMER);
         loginPage.verifyLoginSuccess();
-        dashboardPage.verifyProductBeforeAdding();
-
+        dashboardPage.clickCancelButton();
+//        dashboardPage.verifyProductBeforeAdding();
+        loginPage = dashboardPage.logOut();
+        dashboardPageAdmin = loginPage.loginCMSAdmin(ConfigData.EMAILADMIN, ConfigData.PASSWORDADMIN);
+        productPageAdmin = dashboardPageAdmin.clickMenuAddNewProduct();
+        productPageAdmin.clickAddNewProduct();
+        productPageAdmin.inputProductInformation();
+        loginPage = productPageAdmin.logOut();
+        dashboardPage = loginPage.loginCMS(ConfigData.EMAILCUSTOMER, ConfigData.PASSWORDCUSTOMER);
+        WebUI.waitForPageLoaded();
+//        dashboardPage.clickCancelButton();
+        dashboardPage.verifyProductAfterAdding();
 
 
     }
