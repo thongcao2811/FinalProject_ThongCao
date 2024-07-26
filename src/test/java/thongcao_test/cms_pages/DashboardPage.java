@@ -3,6 +3,7 @@ package thongcao_test.cms_pages;
 import lombok.extern.java.Log;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.TimeoutException;
 import org.testng.Assert;
 import thongcao_main.UI.WebUI;
 import thongcao_main.drivers.DriverManager;
@@ -84,19 +85,58 @@ public class DashboardPage {
 
     }
 
-    public void verifyProductBeforeAdding(){
-        WebUI.waitForPageLoaded();
-        WebUI.setTextAndKey(searchTextBox, newProduct, Keys.ENTER);
-        WebUI.waitForElementVisible(newAddingProduct);
-        Assert.assertFalse(WebUI.checkElementDisplayed(newAddingProduct),"Product is existing");
+//    public void verifyProductBeforeAdding(){
+//        WebUI.waitForPageLoaded();
+//        WebUI.setTextAndKey(searchTextBox, newProduct, Keys.ENTER);
+//        WebUI.waitForElementVisible(newAddingProduct);
+//        Assert.assertFalse(WebUI.checkElementExist(newAddingProduct),"Product is existing");
+//    }
 
+    public void verifyProductBeforeAdding() {
+        try {
+            WebUI.waitForPageLoaded();
+            WebUI.setTextAndKey(searchTextBox, newProduct, Keys.ENTER);
+//            boolean productExists = WebUI.checkElementExist(newAddingProduct);
+//            Assert.assertFalse(productExists, "Product is existing: " + newProduct);
+            Assert.assertFalse(WebUI.checkElementExist(newAddingProduct), "Product is existing:" + newAddingProduct);
+        } catch (TimeoutException e) {
+            // Xử lý trường hợp hết thời gian chờ
+            Assert.fail("Timeout waiting for the element Visible. Locator: " + newAddingProduct + ". Exception: " + e.getMessage());
+        } catch (Exception e) {
+            // Xử lý các ngoại lệ khác
+            e.printStackTrace();
+            Assert.fail("An error occurred while verifying the product: " + e.getMessage());
+        }
     }
 
-    public void verifyProductAfterAdding(){
-        WebUI.waitForPageLoaded();
-        WebUI.setTextAndKey(searchTextBox, newProduct, Keys.ENTER);
-        WebUI.waitForElementVisible(newAddingProduct);
-        Assert.assertTrue(WebUI.checkElementDisplayed(newAddingProduct),"Product is NOT existing");
+
+
+//    public void verifyProductAfterAdding(){
+//        WebUI.waitForPageLoaded();
+//        WebUI.setTextAndKey(searchTextBox, newProduct, Keys.ENTER);
+//        WebUI.waitForElementVisible(newAddingProduct);
+//        Assert.assertTrue(WebUI.checkElementExist(newAddingProduct),"Product is NOT existing");
+//        WebUI.clickElement(newAddingProduct);
+//        WebUI.sleep(5);
+//    }
+
+    public void verifyProductAfterAdding() {
+        try {
+            WebUI.waitForPageLoaded();
+            WebUI.setTextAndKey(searchTextBox, newProduct, Keys.ENTER);
+//            boolean productExists = WebUI.checkElementExist(newAddingProduct);
+//            Assert.assertFalse(productExists, "Product is existing: " + newProduct);
+            Assert.assertTrue(WebUI.checkElementExist(newAddingProduct), "Product is NOT existing:" + newAddingProduct);
+            WebUI.clickElement(newAddingProduct);
+            WebUI.sleep(5);
+        } catch (TimeoutException e) {
+            // Xử lý trường hợp hết thời gian chờ
+            Assert.fail("Timeout waiting for the element Visible. Locator: " + newAddingProduct + ". Exception: " + e.getMessage());
+        } catch (Exception e) {
+            // Xử lý các ngoại lệ khác
+            e.printStackTrace();
+            Assert.fail("An error occurred while verifying the product: " + e.getMessage());
+        }
     }
 
 

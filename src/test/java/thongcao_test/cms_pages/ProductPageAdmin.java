@@ -2,6 +2,7 @@ package thongcao_test.cms_pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.testng.Assert;
 import thongcao_main.UI.WebUI;
 
 public class ProductPageAdmin {
@@ -34,10 +35,11 @@ public class ProductPageAdmin {
         WebUI.setText(inputTags,"sportshoes");
         WebUI.setKey(inputTags, Keys.ENTER);
         WebUI.setText(inputUnitPrice, "2600000");
-        WebUI.setText(inputDiscount,"5");
+        WebUI.setText(inputDiscount,"0");
         WebUI.setText(inputQuantity,"3");
         WebUI.sleep(3);
         WebUI.clickElement(buttonSaveandPublish);
+
     }
 
     public LoginPage logOut(){

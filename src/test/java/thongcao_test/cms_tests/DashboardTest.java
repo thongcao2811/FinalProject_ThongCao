@@ -38,7 +38,7 @@ public class DashboardTest extends BaseTest {
         dashboardPage = loginPage.loginCMS(ConfigData.EMAILCUSTOMER,ConfigData.PASSWORDCUSTOMER);
         loginPage.verifyLoginSuccess();
         dashboardPage.clickCancelButton();
-//        dashboardPage.verifyProductBeforeAdding();
+        dashboardPage.verifyProductBeforeAdding();
         loginPage = dashboardPage.logOut();
         dashboardPageAdmin = loginPage.loginCMSAdmin(ConfigData.EMAILADMIN, ConfigData.PASSWORDADMIN);
         productPageAdmin = dashboardPageAdmin.clickMenuAddNewProduct();
@@ -47,7 +47,6 @@ public class DashboardTest extends BaseTest {
         loginPage = productPageAdmin.logOut();
         dashboardPage = loginPage.loginCMS(ConfigData.EMAILCUSTOMER, ConfigData.PASSWORDCUSTOMER);
         WebUI.waitForPageLoaded();
-//        dashboardPage.clickCancelButton();
         dashboardPage.verifyProductAfterAdding();
 
 
