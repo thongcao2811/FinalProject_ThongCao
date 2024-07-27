@@ -28,7 +28,7 @@ public class DashboardTest extends BaseTest {
         dashboardPage = loginPage.loginCMS(ConfigData.EMAILCUSTOMER, ConfigData.PASSWORDCUSTOMER);
         loginPage.verifyLoginSuccess();
         dashboardPage.clickCancelButton();
-        dashboardPage.searchProduct();
+        dashboardPage.searchExistingProduct("Gio Qua Tet");
         dashboardPage.setProductInfo();
 
     }
@@ -48,6 +48,7 @@ public class DashboardTest extends BaseTest {
         dashboardPage = loginPage.loginCMS(ConfigData.EMAILCUSTOMER, ConfigData.PASSWORDCUSTOMER);
         WebUI.waitForPageLoaded();
         dashboardPage.verifyProductAfterAdding();
+        dashboardPage.searchNewProduct("Yonex 65Z3");
 
 
     }

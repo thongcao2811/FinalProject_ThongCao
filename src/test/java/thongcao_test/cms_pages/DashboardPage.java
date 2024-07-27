@@ -53,13 +53,21 @@ public class DashboardPage {
         return new LoginPage();
     }
 
-    public void searchProduct(){
+    public void searchExistingProduct(String productName){
         WebUI.waitForPageLoaded();
-        WebUI.setTextAndKey(searchTextBox, inputProductName, Keys.ENTER);
+        WebUI.setTextAndKey(searchTextBox, productName, Keys.ENTER);
         WebUI.waitForPageLoaded();
         WebUI.clickElement(firstNewProduct);
         WebUI.sleep(3);
     }
+
+//    public void searchNewProduct(String productName){
+//        WebUI.waitForPageLoaded();
+//        WebUI.setTextAndKey(searchTextBox, productName, Keys.ENTER);
+//        WebUI.waitForPageLoaded();
+//        WebUI.clickElement(newAddingProduct);
+//        WebUI.sleep(3);
+//    }
 
     public void splitString(String text){
         String originalText = "";
