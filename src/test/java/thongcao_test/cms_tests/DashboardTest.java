@@ -43,14 +43,12 @@ public class DashboardTest extends BaseTest {
         dashboardPageAdmin = loginPage.loginCMSAdmin(ConfigData.EMAILADMIN, ConfigData.PASSWORDADMIN);
         productPageAdmin = dashboardPageAdmin.clickMenuAddNewProduct();
         productPageAdmin.clickAddNewProduct();
-        productPageAdmin.inputProductInformation();
+        productPageAdmin.inputProductInformation("Yonex 65Z3","Sport shoes","KG",1,"sportshoes",2600000,0,3);
         loginPage = productPageAdmin.logOut();
         dashboardPage = loginPage.loginCMS(ConfigData.EMAILCUSTOMER, ConfigData.PASSWORDCUSTOMER);
         WebUI.waitForPageLoaded();
         dashboardPage.verifyProductAfterAdding();
-        dashboardPage.searchNewProduct("Yonex 65Z3");
-
-
+        dashboardPage.verifyNewProductInfo();
     }
 
 

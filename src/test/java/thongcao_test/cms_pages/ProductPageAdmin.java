@@ -25,21 +25,36 @@ public class ProductPageAdmin {
         WebUI.clickElement(addNewProduct);
     }
 
-    public void inputProductInformation(){
-        WebUI.setText(inputProductName,"Yonex 65Z3");
+//    public void inputProductInformation(){
+//        WebUI.setText(inputProductName,"Yonex 65Z3");
+//        WebUI.clickElement(dropdownCategory);
+//        WebUI.setText(inputCategorySearch,"Sport shoes");
+//        WebUI.setKey(inputCategorySearch, Keys.ENTER);
+//        WebUI.setText(inputUnit, "KG");
+//        WebUI.setText(inputMinimumPurchaseQty,"1");
+//        WebUI.setText(inputTags,"sportshoes");
+//        WebUI.setKey(inputTags, Keys.ENTER);
+//        WebUI.setText(inputUnitPrice, "2600000");
+//        WebUI.setText(inputDiscount,"0");
+//        WebUI.setText(inputQuantity,"3");
+//        WebUI.sleep(3);
+//        WebUI.clickElement(buttonSaveandPublish);
+//    }
+
+    public void inputProductInformation(String productName, String category, String unit, int minimumPurchaseQty, String tags, int unitPrice, int discount, int quantity){
+        WebUI.setText(inputProductName, productName);
         WebUI.clickElement(dropdownCategory);
-        WebUI.setText(inputCategorySearch,"Sport shoes");
+        WebUI.setText(inputCategorySearch, category);
         WebUI.setKey(inputCategorySearch, Keys.ENTER);
-        WebUI.setText(inputUnit, "KG");
-        WebUI.setText(inputMinimumPurchaseQty,"1");
-        WebUI.setText(inputTags,"sportshoes");
+        WebUI.setText(inputUnit, unit);
+        WebUI.setText(inputMinimumPurchaseQty, String.valueOf(minimumPurchaseQty));
+        WebUI.setText(inputTags,tags);
         WebUI.setKey(inputTags, Keys.ENTER);
-        WebUI.setText(inputUnitPrice, "2600000");
-        WebUI.setText(inputDiscount,"0");
-        WebUI.setText(inputQuantity,"3");
+        WebUI.setText(inputUnitPrice, String.valueOf(unitPrice));
+        WebUI.setText(inputDiscount, String.valueOf(discount));
+        WebUI.setText(inputQuantity, String.valueOf(quantity));
         WebUI.sleep(3);
         WebUI.clickElement(buttonSaveandPublish);
-
     }
 
     public LoginPage logOut(){

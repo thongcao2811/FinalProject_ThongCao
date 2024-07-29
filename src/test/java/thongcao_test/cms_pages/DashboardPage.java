@@ -14,6 +14,8 @@ public class DashboardPage {
     String inputProductName = "Gio Qua Tet";
     String newProduct = "Yonex 65Z3";
     private By newAddingProduct = By.xpath("//a[normalize-space()='Yonex 65Z3']");
+    private By newAddingProductDetail = By.xpath("//h1[normalize-space()='Yonex 65Z3']");
+
     private By menuDashboard = By.xpath("//div[@class='d-flex align-items-start']//span[@class='aiz-side-nav-text'][normalize-space()='Dashboard']");
     private By manageProfile = By.xpath("//div[@class='d-flex align-items-start']//span[@class='aiz-side-nav-text'][normalize-space()='Manage Profile']");
     private By homePage = By.xpath("//a[contains(text(),'Home')]");
@@ -61,13 +63,14 @@ public class DashboardPage {
         WebUI.sleep(3);
     }
 
-//    public void searchNewProduct(String productName){
-//        WebUI.waitForPageLoaded();
-//        WebUI.setTextAndKey(searchTextBox, productName, Keys.ENTER);
-//        WebUI.waitForPageLoaded();
-//        WebUI.clickElement(newAddingProduct);
-//        WebUI.sleep(3);
-//    }
+    public void verifyNewProductInfo(){
+        WebUI.waitForPageLoaded();
+        WebUI.sleep(3);
+        Assert.assertEquals(WebUI.getElementText(newAddingProductDetail),"Yonex 65Z3","Product Name is not correct");
+        Assert.assertEquals(WebUI.getElementText(soldBy).split(":",2)[1].trim(),"Inhouse product", "Supplier is not correct");
+        Assert.assertEquals(WebUI.getElementText(price).replace("$","").replace(",",""), "2600000.00","Unit price is not correct");
+        WebUI.sleep(3);
+    }
 
     public void splitString(String text){
         String originalText = "";
@@ -86,7 +89,7 @@ public class DashboardPage {
         ExcelHelper excelHelper = new ExcelHelper();
         excelHelper.setExcelFile("src/test/resources/testdata/ProductInfo.xlsx","Sheet1");
         excelHelper.setCellData(WebUI.getElementText(productName),"Name",1);
-        excelHelper.setCellData(WebUI.getElementText(soldBy).split(":",2)[1].trim(),"Soldby",1);//
+        excelHelper.setCellData(WebUI.getElementText(soldBy).split(":",2)[1].trim(),"Soldby",1);
         excelHelper.setCellData(WebUI.getElementText(price),"Price",1);
         excelHelper.setCellData(WebUI.getElementAttribute(quantity,"placeholder"),"Quantity",1);
         excelHelper.setCellData(WebUI.getElementText(totalPrice),"TotalPrice",1);
