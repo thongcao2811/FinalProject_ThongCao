@@ -12,7 +12,7 @@ public class HomeTest extends BaseTest {
     DashboardPage dashboardPage;
     HomePage homePage;
 
-    @Test
+    @Test (priority = 0)
     public void verifyAdding2ProductToCart(){
         dashboardPage = loginPage.loginCMS(ConfigData.EMAILCUSTOMER,ConfigData.PASSWORDCUSTOMER);
         dashboardPage.clickCancelButton();
@@ -20,7 +20,7 @@ public class HomeTest extends BaseTest {
         homePage.verifyAdd2ProductsToCart();
 
     }
-    @Test
+    @Test (priority = 1)
     public void verifyCheckOutProducts(){
         dashboardPage = loginPage.loginCMS(ConfigData.EMAILCUSTOMER,ConfigData.PASSWORDCUSTOMER);
         dashboardPage.clickCancelButton();
