@@ -24,9 +24,6 @@ public class HomePage {
     private By messageOrderComplete = By.xpath("//h1[normalize-space()='Thank You for Your Order!']");
 
 
-
-
-//    int Products = Integer.parseInt(String.valueOf(numberofProducts));
     public void addProductToCart() {
         WebUI.waitForPageLoaded();
 //        WebUI.sleep(5);
@@ -36,12 +33,10 @@ public class HomePage {
         WebUI.clickElement(homePage);
     }
 
-    public void verifyAdd2ProductsToCart(){
-//        WebUI.waitForPageLoaded();
+    public void verifyAdd2ProductsToCart(){//
         WebUI.sleep(5);
         WebUI.clickElement(firstProduct);
         addProductToCart();
-//        WebUI.waitForPageLoaded();
         WebUI.sleep(5);
         WebUI.clickElement(secondProduct);
         addProductToCart();
@@ -51,7 +46,7 @@ public class HomePage {
     }
 
     public void checkoutProduct(){
-        verifyAdd2ProductsToCart();
+//        verifyAdd2ProductsToCart();
         WebUI.clickElement(displayCart);
         WebUI.clickElement(checkOut);
         WebUI.clickElement(addressInforadio);
@@ -62,16 +57,7 @@ public class HomePage {
         WebUI.clickElement(buttonCompleteOrder);
         Assert.assertTrue(DriverManager.getDriver().getCurrentUrl().contains("order-confirmed"),"Order is not successfully");
         Assert.assertEquals(WebUI.getElementText(messageOrderComplete),"Thank You for Your Order!","Order is not successfully");
-
-
-
-
     }
-
-
-
-
-
 }
 
 

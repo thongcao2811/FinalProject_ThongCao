@@ -10,13 +10,11 @@ import thongcao_main.drivers.DriverManager;
 import thongcao_main.helpers.ExcelHelper;
 
 public class DashboardPage {
-    LoginPage loginPage = new LoginPage();
-    String inputProductName = "Gio Qua Tet";
     String newProduct = "Yonex 65Z3";
     private By newAddingProduct = By.xpath("//a[normalize-space()='Yonex 65Z3']");
     private By newAddingProductDetail = By.xpath("//h1[normalize-space()='Yonex 65Z3']");
 
-    private By menuDashboard = By.xpath("//div[@class='d-flex align-items-start']//span[@class='aiz-side-nav-text'][normalize-space()='Dashboard']");
+
     private By manageProfile = By.xpath("//div[@class='d-flex align-items-start']//span[@class='aiz-side-nav-text'][normalize-space()='Manage Profile']");
     private By homePage = By.xpath("//a[contains(text(),'Home')]");
     private By logoutButton = By.xpath("//a[contains(@class,'text-reset d-inline-block opacity-60 py-2')][normalize-space()='Logout']");
@@ -31,8 +29,6 @@ public class DashboardPage {
     private By price = By.xpath("//strong[@class='h2 fw-600 text-primary']");
     private By quantity = By.xpath("//input[@placeholder='1']");
     private By totalPrice = By.xpath("//strong[@id='chosen_price']");
-
-
 
 
     public ManageProfilePage clickManageProfile(){
@@ -71,18 +67,6 @@ public class DashboardPage {
         Assert.assertEquals(WebUI.getElementText(price).replace("$","").replace(",",""), "2600000.00","Unit price is not correct");
         WebUI.sleep(3);
     }
-
-    public void splitString(String text){
-        String originalText = "";
-        String[] parts = originalText.split(":");
-        if (parts.length > 1) {
-            String result = parts[1];
-//            System.out.println("Extracted text: " + result);
-        } else {
-            System.out.println("Pattern not found in the original text.");
-        }
-    }
-
     
 
     public void setProductInfo(){
@@ -96,75 +80,33 @@ public class DashboardPage {
 
     }
 
-//    public void verifyProductBeforeAdding(){
-//        WebUI.waitForPageLoaded();
-//        WebUI.setTextAndKey(searchTextBox, newProduct, Keys.ENTER);
-//        WebUI.waitForElementVisible(newAddingProduct);
-//        Assert.assertFalse(WebUI.checkElementExist(newAddingProduct),"Product is existing");
-//    }
-
     public void verifyProductBeforeAdding() {
         try {
             WebUI.waitForPageLoaded();
             WebUI.setTextAndKey(searchTextBox, newProduct, Keys.ENTER);
-//            boolean productExists = WebUI.checkElementExist(newAddingProduct);
-//            Assert.assertFalse(productExists, "Product is existing: " + newProduct);
             Assert.assertFalse(WebUI.checkElementExist(newAddingProduct), "Product is existing:" + newAddingProduct);
         } catch (TimeoutException e) {
-            // Xử lý trường hợp hết thời gian chờ
             Assert.fail("Timeout waiting for the element Visible. Locator: " + newAddingProduct + ". Exception: " + e.getMessage());
         } catch (Exception e) {
-            // Xử lý các ngoại lệ khác
             e.printStackTrace();
             Assert.fail("An error occurred while verifying the product: " + e.getMessage());
         }
     }
-
-
-
-//    public void verifyProductAfterAdding(){
-//        WebUI.waitForPageLoaded();
-//        WebUI.setTextAndKey(searchTextBox, newProduct, Keys.ENTER);
-//        WebUI.waitForElementVisible(newAddingProduct);
-//        Assert.assertTrue(WebUI.checkElementExist(newAddingProduct),"Product is NOT existing");
-//        WebUI.clickElement(newAddingProduct);
-//        WebUI.sleep(5);
-//    }
 
     public void verifyProductAfterAdding() {
         try {
             WebUI.waitForPageLoaded();
             WebUI.setTextAndKey(searchTextBox, newProduct, Keys.ENTER);
-//            boolean productExists = WebUI.checkElementExist(newAddingProduct);
-//            Assert.assertFalse(productExists, "Product is existing: " + newProduct);
             Assert.assertTrue(WebUI.checkElementExist(newAddingProduct), "Product is NOT existing:" + newAddingProduct);
             WebUI.clickElement(newAddingProduct);
             WebUI.sleep(5);
         } catch (TimeoutException e) {
-            // Xử lý trường hợp hết thời gian chờ
             Assert.fail("Timeout waiting for the element Visible. Locator: " + newAddingProduct + ". Exception: " + e.getMessage());
         } catch (Exception e) {
-            // Xử lý các ngoại lệ khác
             e.printStackTrace();
             Assert.fail("An error occurred while verifying the product: " + e.getMessage());
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 }
 
