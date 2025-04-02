@@ -30,7 +30,7 @@ public class DashboardPage {
     private By quantity = By.xpath("//input[@placeholder='1']");
     private By totalPrice = By.xpath("//strong[@id='chosen_price']");
 
-
+    // Access
     public ManageProfilePage clickManageProfile(){
         WebUI.clickElement(manageProfile);
         return new ManageProfilePage();

@@ -14,8 +14,6 @@ import java.io.ObjectInputFilter;
 
 public class DashboardTest extends BaseTest {
 
-
-
     LoginPage loginPage = new LoginPage();
     DashboardPage dashboardPage = new DashboardPage();
     DashboardPageAdmin dashboardPageAdmin = new DashboardPageAdmin();
